@@ -873,6 +873,30 @@ pip3 install neovim --upgrade
     alias ctags >> ~/.zshrc
     ```
 
+    * **[vimproc].SpaceVim/bundle/v...4.so“ is not found:help vimproc and make it.报错**
+
+    解决方案：
+    先找到vimproc的安装位置：
+
+    ```shell
+     find ~/ -name vimproc
+    ```
+
+    执行结果如下：
+
+    ```shell
+    ~ find ~/ -name vimproc
+    /home/vncuser/.SpaceVim/bundle/vimproc.vim/autoload/vimproc
+    ```
+
+
+    Make
+
+    ```shell
+    cd /home/vncuser/.SpaceVim/bundle/vimproc.vim
+    make
+    ```
+
     
 
 * 插件
