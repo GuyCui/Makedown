@@ -802,7 +802,7 @@ pip3 install neovim --upgrade
   curl -sLf https://spacevim.org/cn/install.sh | bash
   ```
 
-* 配置javalsp
+* #### 配置javalsp
   这里我部署在 ~/.SpaceVim.d/javalsp目录，这个可以根据需要自行修改，如果修改了，则上面配置文件中的路径也要同步修改。
 
   ```shell
@@ -814,19 +814,66 @@ pip3 install neovim --upgrade
   默认下载速度很慢，推荐使用迅雷下载。
   把下载下来的文件解压到 `~/.SpaceVim.d/javalsp`目录。
 
-  * ### 修改配置
+  * 修改配置
 
-    编辑SpaceVim配置文件`~/.SpaceVim.d/init.toml`
+  编辑SpaceVim配置文件`~/.SpaceVim.d/init.toml`
 
-    ```bash
-    vim ~/.SpaceVim.d/init.toml
+  ```bash
+  vim ~/.SpaceVim.d/init.toml
+  ```
+
+  SpaceVim默认是不开启java智能提示的，需要手动开启。增加以下内容：
+
+  ```shell
+  [[layers]]
+    name = "lang#java"
+  
+  [[layers]]
+    name = "lsp"
+    filetypes = [
+      "java"
+    ]
+    [layers.override_cmd]
+      java = [
+      "java",
+      "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+      "-Dosgi.bundles.defaultStartLevel=4",
+      "-Declipse.product=org.eclipse.jdt.ls.core.product",
+      "-Dlog.protocol=true",
+      "-Dlog.level=NONE",
+      "-noverify",
+      "-Xmx1G",
+      "-jar",
+      "~/.SpaceVim.d/javalsp/plugins/org.eclipse.equinox.launcher_1.6.0.v20200915-1508.jar",
+      "-configuration",
+      "~/.SpaceVim.d/javalsp/config_mac",
+      "-data",
+      "~/.SpaceVim.d/javalsp/.cache/javalsp"
+      ]
+  ```
+
+  这里的-jar -configuration -data 的值根据实际部署位置调整即可。
+  特别是-jar项，因为jar的版本一直在升级，很有可能不一样！
+
+  -configuration根据当前系统，选择对应的配置文件：
+
+  config_win, Windows 系统
+  config_mac, MacOS 系统
+  config_linux, Linux 系统
+
+  配置完成以后，下一次打开vim 会自动安装一些插件。
+
+  * 语法树 报错解决
+
+    默认的语法树插件是 tagbar，快捷键为 F2。这一快捷键将会在左侧打开一个语法树侧栏。
+
+    ```zsh
+    brew install ctags 
+    alias ctags="`brew --prefix`/bin/ctags" 
+    alias ctags >> ~/.zshrc
     ```
 
-    SpaceVim默认是不开启java智能提示的，需要手动开启。增加以下内容：
-
-    ```
     
-    ```
 
 * 插件
 
