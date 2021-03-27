@@ -789,6 +789,45 @@ reddit              https://www.reddit.com/r/vim/
 brew install --HEAD luajit
 brew install --HEAD neovim
 ```
+* 安装python支持，我用denite和YCM只需要python3
+
+```shell
+brew install python3
+pip3 install neovim --upgrade
+```
+
+* 安装 SpaceVim
+
+  ```shell
+  curl -sLf https://spacevim.org/cn/install.sh | bash
+  ```
+
+* 配置javalsp
+  这里我部署在 ~/.SpaceVim.d/javalsp目录，这个可以根据需要自行修改，如果修改了，则上面配置文件中的路径也要同步修改。
+
+  ```shell
+  # 创建javalsp所需目录
+  mkdir -p ~/.SpaceVim.d/javalsp/.cache/javalsp
+  ```
+
+  下载[eclipse.jdt.ls](http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz)
+  默认下载速度很慢，推荐使用迅雷下载。
+  把下载下来的文件解压到 `~/.SpaceVim.d/javalsp`目录。
+
+  * ### 修改配置
+
+    编辑SpaceVim配置文件`~/.SpaceVim.d/init.toml`
+
+    ```bash
+    vim ~/.SpaceVim.d/init.toml
+    ```
+
+    SpaceVim默认是不开启java智能提示的，需要手动开启。增加以下内容：
+
+    ```
+    
+    ```
+
 * 插件
 
 能在 neovim 中使用的插件管理工具有不少，这里介绍的是 [vim-plug](https://github.com/junegunn/vim-plug)。
@@ -801,3 +840,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 [vim-easy-align](https://github.com/junegunn/vim-easy-align)是一个用来对齐指定符号的工具，还是比较有用的：
 `Plug 'junegunn/vim-easy-align'`
+
+
+
