@@ -891,13 +891,14 @@ pip3 install neovim --upgrade
 
 
     Make
-
+    
     ```shell
     cd /home/vncuser/.SpaceVim/bundle/vimproc.vim
     make
     ```
 
-    
+
+​    
 
 * 插件
 
