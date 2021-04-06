@@ -136,10 +136,11 @@ zsh completions have been installed to:
 ```
 
 ##### bat 代替 cat
+
 cat 某个文件，可以在终端直接输出文件内容，bat 相比 cat 增加了行号和颜色高亮 👍
 
 直接上个效果
-![](media/16156970587690/16157035255815.jpg)
+![](http://qq0g5pggg.hb-bkt.clouddn.com/16157035255815.jpg)
 [官网](https://github.com/sharkdp/bat)
 安装在终端输入
 `brew install bat`
