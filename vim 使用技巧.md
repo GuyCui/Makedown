@@ -79,3 +79,22 @@ var foo = "method(" + argument1 + "," + argument2 + ")";
 | 执行替换                 | :s/target/replacement | &    | u    |
 | 执行一系列修改           | qx{changes}q          | @x   | u    |
 
+### 技巧 5 查找并手动替换
+
+> Vim 提供了一个:substitute 命令专门用于查找替换任务，不过用上面介绍的技术，我们也可以手动修改第一处地方，然后再一个个地查找替换其他匹配项。**.** 命令可以把我们从繁重的工作中解放出来，而即将登场的另一个有用的单键命令，则能够让我们方便地在匹配项间跳转。
+
+在下面这段文本中，每一行都出现了单词“content”：
+
+```txt
+the_vim_way/1_copy_content.txt
+...We're waiting for content before the site can go live... ...If you are content with this, let's go ahead with it... ...We'll launch as soon as we have the content...
+```
+
+#### 偷懒的办法：无需输入就可以进行查找
+
+我们可以简单地把光标移到“content”这个单词上，然后使用 **\*** 命令对它进行查找。执行过一次查找“content”的命令后，现在我们只需按 n 键就可以跳到下一个匹配项。
+
+#### 使修改可重复
+
+当光标位于“content”的开头时，我们就可以着手修改它。这包括两步操作：首先要删除单词“content”，然后输入替代的单词。**cw** 命令会删除从光标位置到单词结 尾间的字符，并进入插入模式，接下来我们就可以输入单词“copy”了。Vim 会把我 们离开插入模式之前的全部按键操作都记录下来，因此整个 **cw**copy<Esc> 会被当成一 个修改。也就是说，执行 **.** 命令会删除从光标到当前单词结尾间的字符，并把它修改 为“copy”。可以再次按 n 移到下一个地方，如此循环往复，直到完成全部的修改。
+
